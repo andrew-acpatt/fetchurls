@@ -105,19 +105,6 @@ displaySpinner()
 
 fetchSiteUrls() {
   cd $SAVEFILEDIRECTORY && wget --spider -r -nd --max-redirect=30 $DOMAIN 2>&1 \
-  | grep '^--' \
-  | awk '{ print $3 }' \
-  | grep -E -v '\.(css|js|map|xml|png|gif|jpg|JPG|bmp|txt|pdf|svg)(\?.*)?$' \
-  | grep -E -v '\?(p|replytocom)=' \
-  | grep -E -v '\/wp-content\/uploads\/' \
-  | grep -E -v '\/feed\/' \
-  | grep -E -v '\/category\/' \
-  | grep -E -v '\/tag\/' \
-  | grep -E -v '\/page\/' \
-  | grep -E -v '\/widgets.php$' \
-  | grep -E -v '\/wp-json\/' \
-  | grep -E -v '\/xmlrpc' \
-  | sort -u \
   > $SAVEFILEDIRECTORY/$1.txt
 } # // fetchSiteUrls()
 
@@ -181,6 +168,7 @@ echo "#    "
 ls -lah ${SAVEFILEDIRECTORY}
 # Start process
 fetchSiteUrls $savefilename & displaySpinner
+ls -lah ${SAVEFILEDIRECTORY}
 
 # Process is complete
 cat ${SAVEFILEDIRECTORY}/$savefilename.txt
