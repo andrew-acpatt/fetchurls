@@ -106,6 +106,9 @@ displaySpinner()
 fetchSiteUrls() {
   cd $SAVEFILEDIRECTORY && wget --spider -r -nd --max-redirect=30 $DOMAIN 2>&1 \
   > $SAVEFILEDIRECTORY/$1.txt
+  echo $SAVEFILEDIRECTORY
+  echo $1
+  wget --spider -r -nd --max-redirect=30 $DOMAIN 2>&1
 } # // fetchSiteUrls()
 
 if [ -z "$DOMAIN" ]; then
