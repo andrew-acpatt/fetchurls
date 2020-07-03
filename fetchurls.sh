@@ -178,11 +178,12 @@ echo "${COLOR_RESET}#    "
 echo "#    Fetching URLs for ${displaydomain}"
 echo "#    "
 
+ls -lah ${SAVEFILEDIRECTORY}
 # Start process
 fetchSiteUrls $savefilename & displaySpinner
 
 # Process is complete
-
+cat ${SAVEFILEDIRECTORY}/$savefilename.txt
 # Count number of results if file exists
 if [ -f $SAVEFILEDIRECTORY/$SAVEFILENAME.txt ]; then
     RESULT_COUNT="$(cat ${SAVEFILEDIRECTORY}/$savefilename.txt | sed '/^\s*$/d' | wc -l)"
