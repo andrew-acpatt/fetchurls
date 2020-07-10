@@ -113,7 +113,7 @@ fetchSiteUrls() {
   cd $SAVEFILEDIRECTORY && wget --spider -r -nd --max-redirect=30 $DOMAIN 2>&1 \
   | grep '^--' \
   | awk '{ print $3 }' \
-  | grep -E -v '\.(css|js|map|xml|png|gif|jpg|JPG|PDF|doc|docx|bmp|txt|pdf|svg)(\?.*)?$' \
+  | grep -E -v '\.(css|js|map|xml|png|gif|jpg|JPG|PDF|doc|docx|bmp|txt|pdf|svg|jpeg|JPEG|PNG|xls|xlsx|xlsm|DOCX)(\?.*)?$' \
   | grep -E -v '\?(p|replytocom)=' \
   | grep -E -v '\/wp-content\/uploads\/' \
   | grep -E -v '\/feed\/' \
